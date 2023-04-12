@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+    <div class="col">
+        <form action="/compare" enctype="multipart/form-data" method="post">
+
+            <!-- TODO -->
+
+            <div>
+                <input type="file" name="file1">
+            </div>
+            <br>
+            <div>
+                <input type="file" name="file2">
+            </div>
+            <div>
+                <label>
+                    <input type="radio" name="algorithm" value="lines">
+                    Compare lines
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="radio" name="algorithm" value="sentences">
+                    Compare sentences
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input name="algorithm" type="radio" value="substrings" id="id_substrings">
+                    Compare substrings<br>
+                    <input min="1" name="length" placeholder="of length n" type="number" id="number-input" onclick="selectRadio()">
+                </label>
+            </div>
+            <div>
+                <button type="submit">Compare</button>
+            </div>
+            <script>
+                function selectRadio() {
+                document.getElementById("id_substrings").checked = true;
+                document.getElementById("number-input").focus()
+                }
+            </script>
+        </form>
+    </div>
+
+{% endblock %}
